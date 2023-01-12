@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITEC145 Section B (Arrays and Files)", "ITEC145 Section B (Arrays and Files)\ITEC145 Section B (Arrays and Files).csproj", "{A1220282-4340-4C19-AA2F-14C9EA09857E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1220282-4340-4C19-AA2F-14C9EA09857E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1220282-4340-4C19-AA2F-14C9EA09857E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1220282-4340-4C19-AA2F-14C9EA09857E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1220282-4340-4C19-AA2F-14C9EA09857E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {547A4A8E-AF31-4D7E-8CA0-EE05BFC034C7}
+	EndGlobalSection
+EndGlobal
