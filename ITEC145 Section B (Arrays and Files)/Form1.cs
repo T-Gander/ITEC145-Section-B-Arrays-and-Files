@@ -4,7 +4,7 @@ namespace ITEC145_Section_B__Arrays_and_Files_
     {
         List<string> names = new List<string>();
         List<double> temperatures = new List<double>();
-        
+        int count = 0;
 
         public Form1()
         {
@@ -52,29 +52,16 @@ namespace ITEC145_Section_B__Arrays_and_Files_
 
         private void LoadFile(List<double> data)
         {
+            data.Clear();
             try
             {
-                txtAverageTemp.Clear();                                             //To stop concatenation
-                double avgTemp = 0;                                                 //Variable for holding average temp
-                int count = 0;                                                      //Variable for holding a count
-
-                StreamReader inputFile = new StreamReader("mh_temp2021.txt");          //Creates a streamreader to read the outputfile
+                StreamReader inputFile = new StreamReader("mh_temp2021.txt");       //Creates a streamreader to read the outputfile
 
                 while (inputFile.EndOfStream != true)                               //runs loop until the reader hits the end of stream
                 {
                     data.Add(double.Parse(inputFile.ReadLine()));                   //Adds the stream reader lines to the names list
                 }
                 inputFile.Close();                                                  //Closes the streamreader process
-
-                foreach (double temp in data)                                       //Checks all the strings in names list
-                {
-                    avgTemp += temp;                                                //Adds every temp in list temperatures to avgTemp variable
-                    count++;                                                        //Iterates for each line of data
-                }
-                avgTemp /= count;
-
-
-                txtAverageTemp.Text = $"{count} data samples read. Average = {avgTemp.ToString("N4")}";     //Output and formatting
 
             }
             catch (Exception ex)
@@ -95,8 +82,50 @@ namespace ITEC145_Section_B__Arrays_and_Files_
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
+            txtAverageTemp.Clear();                                             //To stop concatenation
+            double avgWeatherData = 0;
+            count = 0;
+
             temperatures.Clear();
             LoadFile(temperatures);
+
+            foreach (double temp in temperatures)                                       //Checks all the strings in names list
+            {
+                avgWeatherData += temp;                                                //Adds every temp in list temperatures to avgTemp variable
+                count++;                                                        //Iterates for each line of data
+            }
+            avgWeatherData /= count;
+            txtAverageTemp.Text = $"{count} data samples read. Average = {avgWeatherData.ToString("N4")}";     //Output and formatting
+        }
+
+        private void btnChallenge_Click(object sender, EventArgs e)
+        {
+            double avgJan = 0;
+            double avgAug = 0;
+
+            LoadFile(temperatures);
+            count = 0;
+
+            for (int i = 0; i < 743; i++)
+            {
+                temperatures[i] += avgJan;
+                count++;
+            }
+
+            avgJan /= count;
+            txtJanuary.Text = $"Average Temperature in January = {avgJan.ToString("N4")}";
+
+            LoadFile(temperatures);
+            count = 0;
+
+            for (int i = 5087; i < 5830; i++)
+            {
+                temperatures[i] += avgAug;
+                count++;
+            }
+
+            avgAug /= count;
+            txtAugust.Text = $"Average Temperature in August = {avgAug.ToString("N4")}";
         }
     }
 }

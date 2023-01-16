@@ -97,10 +97,11 @@
             // 
             this.btnChallenge.Location = new System.Drawing.Point(259, 81);
             this.btnChallenge.Name = "btnChallenge";
-            this.btnChallenge.Size = new System.Drawing.Size(75, 23);
+            this.btnChallenge.Size = new System.Drawing.Size(117, 23);
             this.btnChallenge.TabIndex = 6;
             this.btnChallenge.Text = "Challenge";
             this.btnChallenge.UseVisualStyleBackColor = true;
+            this.btnChallenge.Click += new System.EventHandler(this.btnChallenge_Click);
             // 
             // label2
             // 
