@@ -54,6 +54,7 @@ namespace ITEC145_Section_B__Arrays_and_Files_
         {
             try
             {
+                txtAverageTemp.Clear();                                             //To stop concatenation
                 double avgTemp = 0;                                                 //Variable for holding average temp
                 int count = 0;                                                      //Variable for holding a count
 
