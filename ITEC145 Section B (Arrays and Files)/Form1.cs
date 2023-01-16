@@ -50,7 +50,7 @@ namespace ITEC145_Section_B__Arrays_and_Files_
             }
         }
 
-        private void LoadFile(List<double> data)
+        private void LoadFile(List<double> data)                                    //Method to load a txt file to a list
         {
             data.Clear();
             try
@@ -70,7 +70,7 @@ namespace ITEC145_Section_B__Arrays_and_Files_
             }
         }
 
-        private void SaveFile(string nameInput)
+        private void SaveFile(string nameInput)                                     //Method to save a string to a txt file
         {
             lstOutput.Items.Clear();                                                //Clears list
             StreamWriter outputFile = new StreamWriter("NamesLog.txt", true);       //StreamWriter for saving files
@@ -80,52 +80,53 @@ namespace ITEC145_Section_B__Arrays_and_Files_
             LoadFile(names);
         }
 
+        private void AvgTemp(ref double avgTemp, int index1, int index2, List<double> temperatures)            //Method to calculate the average temp based off of two index's added
+        {
+            count = 0;                                                              //Resets count.
+            for (int i = index1; i < index2; i++)                                   //Loop to start at index1 and end at index2
+            {
+                avgTemp += temperatures[i];                                         //Adds temperatures index's to the avgTemp variable
+                count++;
+            }
+            avgTemp /= count;                                                       //Divides all of the temps by the count value to get the average
+        }
+
+        private void AvgTemp(List<double> avgTempList,ref double avgTemp)           //Overloaded method to average a whole list
+        {
+            count = 0;                                                              //Resets count
+            foreach (double temp in avgTempList)                                    //Checks all the strings in names list
+            {
+                avgTemp += temp;                                                    //Adds every temp in list temperatures to avgTemp variable
+                count++;                                                            //Iterates for each line of data
+            }
+            avgTemp /= count;                                                       //Divides all of the temps by the count value to get the average
+        }
+        
+
+
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            txtAverageTemp.Clear();                                             //To stop concatenation
-            double avgWeatherData = 0;
-            count = 0;
-
-            temperatures.Clear();
-            LoadFile(temperatures);
-
-            foreach (double temp in temperatures)                                       //Checks all the strings in names list
-            {
-                avgWeatherData += temp;                                                //Adds every temp in list temperatures to avgTemp variable
-                count++;                                                        //Iterates for each line of data
-            }
-            avgWeatherData /= count;
+            double avgWeatherData = 0;                                              //Initialises avgWeatherData variable
+            temperatures.Clear();                                                   //Clears temperatures list before repopulating so that double loads aren't possible
+            LoadFile(temperatures);                                                 //Loads file
+            AvgTemp(temperatures,ref avgWeatherData);                               //Calculates average temp on a whole list.
             txtAverageTemp.Text = $"{count} data samples read. Average = {avgWeatherData.ToString("N4")}";     //Output and formatting
         }
 
         private void btnChallenge_Click(object sender, EventArgs e)
         {
-            double avgJan = 0;
+            double avgJan = 0;                                                                  //Initialises avgJan and avgAug variables
             double avgAug = 0;
 
-            LoadFile(temperatures);
-            count = 0;
+            temperatures.Clear();                                                               //Clears temperature list so that double loads don't occur
+            LoadFile(temperatures);                                                             //Loads mh2021_temps file to temperatures list
+            AvgTemp(ref avgJan, 0, 744, temperatures);                                          //Uses indexes to find the average in the entered list
+            txtJanuary.Text = $"Average Temperature in January = {avgJan.ToString("N4")}";      //Output and formatting
 
-            for (int i = 0; i < 743; i++)
-            {
-                temperatures[i] += avgJan;
-                count++;
-            }
-
-            avgJan /= count;
-            txtJanuary.Text = $"Average Temperature in January = {avgJan.ToString("N4")}";
-
-            LoadFile(temperatures);
-            count = 0;
-
-            for (int i = 5087; i < 5830; i++)
-            {
-                temperatures[i] += avgAug;
-                count++;
-            }
-
-            avgAug /= count;
-            txtAugust.Text = $"Average Temperature in August = {avgAug.ToString("N4")}";
+            temperatures.Clear();                                                               //Clears temperature list so that double loads don't occur
+            LoadFile(temperatures);                                                             //Loads mh2021_temps file to temperatures list
+            AvgTemp(ref avgAug, 5087, 5831, temperatures);                                      //Uses indexes to find the average in the entered list
+            txtAugust.Text = $"Average Temperature in August = {avgAug.ToString("N4")}";        //Output and formatting
         }
     }
 }
