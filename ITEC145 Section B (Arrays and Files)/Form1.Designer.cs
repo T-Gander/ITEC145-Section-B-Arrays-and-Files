@@ -75,6 +75,7 @@
             this.btnLoad.TabIndex = 3;
             this.btnLoad.Text = "Load Weather Data";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // label1
             // 
@@ -89,7 +90,7 @@
             // 
             this.txtAverageTemp.Location = new System.Drawing.Point(358, 39);
             this.txtAverageTemp.Name = "txtAverageTemp";
-            this.txtAverageTemp.Size = new System.Drawing.Size(210, 23);
+            this.txtAverageTemp.Size = new System.Drawing.Size(314, 23);
             this.txtAverageTemp.TabIndex = 5;
             // 
             // btnChallenge
@@ -123,14 +124,14 @@
             // 
             this.txtJanuary.Location = new System.Drawing.Point(391, 116);
             this.txtJanuary.Name = "txtJanuary";
-            this.txtJanuary.Size = new System.Drawing.Size(177, 23);
+            this.txtJanuary.Size = new System.Drawing.Size(281, 23);
             this.txtJanuary.TabIndex = 9;
             // 
             // txtAugust
             // 
             this.txtAugust.Location = new System.Drawing.Point(391, 150);
             this.txtAugust.Name = "txtAugust";
-            this.txtAugust.Size = new System.Drawing.Size(177, 23);
+            this.txtAugust.Size = new System.Drawing.Size(281, 23);
             this.txtAugust.TabIndex = 10;
             // 
             // Form1
